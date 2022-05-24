@@ -1,0 +1,35 @@
+import sys
+class Produs:
+    def __init__(self, nume, pret):
+        self.nume = nume
+        self.pret = pret
+class Punga(Produs):
+    def __init__(self, nume, pret, greutate):
+        super().__init__(nume, pret)
+        self.greutate = greutate
+    def get_CalculatePretTotal(self):
+        return self.pret* self.greutate
+    def modifyPret(self,pret):
+        self.pret=pret
+    def modifyGreutate(self,greutate):
+        self.greutate=greutate
+    def display(pret_total):
+        print("Pret total la casa: {:.2f}".format(pret_total))
+
+list = []        
+for i in range(2):        
+     nume, pret, greutate = input().split()
+     pret=float(pret)
+     greutate=float(greutate)
+     list.append( Punga(nume,pret,greutate) )
+     if pret<= 0 or greutate<=0  :
+         print("Valoare invalida")
+         sys.exit()
+
+pret_total = list[0].get_CalculatePretTotal() + list[1].get_CalculatePretTotal()
+print("Pret total la casa: {:.2f}".format(pret_total))
+list[1].modifyPret(9.99)
+list[0].modifyGreutate(1.0)
+pret_total = list[0].get_CalculatePretTotal() + list[1].get_CalculatePretTotal()
+print("Pret total la casa: {:.2f}".format(pret_total))
+    
